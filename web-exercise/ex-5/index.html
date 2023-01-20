@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Pokemon Cards</h1>
+    <div>Sort By (low -> high)</div>
+    <div>
+    <input type="radio" id="weight" value="weight" name="sortBy" onclick="sortBy()">
+    <label for="weight">Weight</label><br>
+    <input type="radio" id="base_experience" value="base_experience" name="sortBy" onclick="sortBy()">
+    <label for="base_experience">Base Experience</label><br>
+    </div>
+    <br>
+    <span id="search">
+        <input type="text" name="search"><span id="searchButton"><button onclick="search()">Search</button></span>
+    </span>
+
+    <div id="gr">
+        <div class="grid-container">
+            
+                <iframe src="" name="description"></iframe>
+            
+        </div>
+    </div>
+        
+
+    
+    
+
+    <br>
+    <button name="show_more" id="showMore" onclick="show_more_pokemons()">Show more</button>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>

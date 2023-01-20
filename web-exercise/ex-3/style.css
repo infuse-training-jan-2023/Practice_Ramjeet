@@ -1,0 +1,214 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+li{
+  list-style: none;
+  padding: 10px;
+}
+.container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 25% auto;
+}
+
+aside {
+  border-right: 3px solid rgb(138, 137, 137);
+}
+
+.um-logo {
+  padding: 16px 24px;
+  border-bottom: 1px solid rgb(205, 205, 205);
+  width: 100%;
+}
+
+.um-user-email {
+  font-size: x-small;
+  padding-left: 35px;
+}
+
+.um-user img {
+  width: 40px;
+}
+.um-user{
+  display: flex;
+  padding: 5px;
+}
+
+.test-designer {
+  width: 50%;
+  height: 200px;
+}
+.um-navitems__secondary{
+  height: 100%;
+}
+.um-navitems__main, .um-navitems__secondary, .um-user-name{
+color: rgb(16, 145, 209);
+font-size: 20px;
+padding: 40px;
+text-transform: capitalize;
+}
+
+
+.um-user-name{
+  font-size: 15px;
+}
+.um-navitems__main{
+  border-bottom: 2px solid grey;
+}
+.um-navitems__secondary{
+  border-bottom: 1px solid grey;
+}
+
+.test{
+  padding: 20px;
+  /*background-color: rgb(13, 102, 176);*/
+  width: 100%;
+  height: 90%;
+  font-size: 18px;
+}
+main{
+  text-align: left;
+  padding: 10px;
+  
+  
+}
+.test-data > span:nth-child(1){
+  background-color: black;
+  color:white;
+  width: 5%;
+} 
+.um-test-name{
+  background-color: rgb(5, 20, 154);
+  color:white;
+  width: 94%;
+  display: inline-block;
+  white-space: nowrap;
+  
+}
+
+.test-properties > span{
+  background-color: rgb(139, 149, 237);
+  color:white;
+  display: inline-block;
+  width: 100%;
+}
+
+.form-properties{
+
+  
+  color:rgb(16, 145, 209);
+}
+label{
+  padding-right: 5%;
+ 
+
+}
+select{
+  color: grey;
+  border-style: none;
+  padding-right: 5px;
+  
+}
+.description{
+  float: right;
+  display: inline;
+  width: 425px;
+}
+.details{
+  display: inline-block;
+  width: 55%;
+}
+textarea{
+  float: right;
+  width: 300px;
+  height: 50px;
+  background-color: rgb(227, 221, 221);
+  border-style: none;
+  margin-top: 5px;
+}
+
+.test-flowchart > span{
+  color:white;
+  background-color: rgb(45, 188, 240);
+  display: inline-block;
+  width: 100%;
+  
+}
+.test-flowchart{
+  width:100%;
+  height: 750px;
+  grid-area: flowchart;
+  border: 2px solid rgb(45, 188, 240);
+}
+.test-variables{
+  grid-area: variables;
+  height: 375px;
+  border: 2px solid rgb(45, 188, 240);
+}
+.test-variables > span, .test-parameters > span{
+background-color: rgb(45, 188, 240);
+display: inline-block;
+width: 100%;
+color: white;
+}
+
+.test-parameters{
+  grid-area: param;
+  height: 375px;
+  border: 2px solid rgb(45, 188, 240);
+}
+
+.test-main{
+ display: grid;
+ grid-template-areas:
+ 'flowchart flowchart variables'
+ 'flowchart flowchart param';
+ margin-top: 50px;
+ gap: 10px;
+
+}
+
+.test-variables > i, .test-parameters > i{
+  float: right;
+  display: block;
+  color:rgb(16, 145, 209);
+}
+
+.table-header > span{
+  margin-top: 5px; 
+  padding: 10px;
+  padding-right: 5px ;
+  display: inline-block;
+  
+}
+.table-header{
+  border-bottom: 1px solid gray;
+  color:rgb(16, 145, 209);
+}
+
+.options{
+  color: rgb(137, 136, 136);
+  font-size: 18px;
+  padding: 10px;
+  margin-right: 5px;
+}
+
+.test-designer{
+  height: 92%;
+  width: 100%;
+  background-color: rgb(183, 182, 182);
+}
+.test-data .bi-pencil-square{
+  color:white;
+  position: relative;
+  right: 84%;
+}
+.bi-x{
+  color: rgb(252, 247, 247);
+  position: relative;
+display: inline;
+padding: 0px;
+right: 50px;
+}
