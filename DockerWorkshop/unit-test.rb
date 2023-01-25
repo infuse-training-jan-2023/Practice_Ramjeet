@@ -1,18 +1,18 @@
 require 'test/unit'
 require_relative 'framework'
 
-class Automate_framework < Test::Unit::TestCase
+class Test_framework < Test::Unit::TestCase
     def test_object_created
-        test_obj=MyFramework.new()
-        assert test_obj.instance_of? (MyFramework)
+        test_obj=Automate_framework.new
+        assert test_obj.instance_of? Automate_framework
     end
     def test_navigate_to
-        test_obj=MyFramework.new()
+        test_obj=Automate_framework.new
         assert_equal("success",test_obj.navigate_to("http://127.0.0.1:5500/demo.html"),"The test fails")
     end
     def test_select_element
         
-        test_obj=MyFramework.new()
+        test_obj=Automate_framework.new
         url="http://127.0.0.1:5500/demo.html"
         test_obj.navigate_to(url)
         assert_not_nil(test_obj.select_element({"id": "search"},0),"The test fails")
@@ -35,7 +35,7 @@ class Automate_framework < Test::Unit::TestCase
     end
     def test_send_data
         
-        test_obj=MyFramework.new()
+        test_obj=Automate_framework.new
         url="http://127.0.0.1:5500/demo.html"
         test_obj.navigate_to(url)
         assert_equal("sent",test_obj.send_data("abc",{"id"=>"search"},0,1),"The test fails")#id
@@ -46,8 +46,8 @@ class Automate_framework < Test::Unit::TestCase
     end
 
     def test_click_on
-        
-        test_obj=MyFramework.new()
+
+        test_obj=Automate_framework.new
         url="http://127.0.0.1:5500/demo.html"
         test_obj.navigate_to(url)
         assert_equal("clicked",test_obj.click_on({"name"=>"submitbtn"},0),"The test fails")
@@ -56,7 +56,7 @@ class Automate_framework < Test::Unit::TestCase
 
     def test_close_browser
         
-        test_obj=MyFramework.new()
+        test_obj=Automate_framework.new
         url="http://127.0.0.1:5500/demo.html"
         test_obj.navigate_to(url)
         assert_equal("closed",test_obj.close_browser,"The test fails")

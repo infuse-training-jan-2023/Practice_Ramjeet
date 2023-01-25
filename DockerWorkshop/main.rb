@@ -2,13 +2,11 @@ require_relative 'framework'
 
 class WebTest
     def initialize
-        @autoFrame=MyFramework.new
+        @autoFrame=Automate_framework.new
     end
     def visit_site(url)
         @autoFrame.navigate_to(url)
     end
-    # def register
-    # end
 
     def login
         @autoFrame.click_on({"xpath": "//*[@id='__next']/header/div[2]/div/div/div[2]/ul/li[1]/a"},0)

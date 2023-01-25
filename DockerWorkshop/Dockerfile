@@ -1,8 +1,12 @@
-FROM ruby AS build1
+FROM ruby:2.7 as base
+
 WORKDIR ./unit_test
-COPY Gemfile .
+ADD Gemfile .
 RUN bundle install --gemfile Gemfile
 
+
+ENV CHROMEDRIVER_VERSION 109.0.5414.74
+ENV CHROMEDRIVER_PATH /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver
 
 RUN CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` && \
     mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION && \
@@ -21,13 +25,13 @@ RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-ke
     rm -rf /var/lib/apt/lists/*
 
 
-EXPOSE 5500
+COPY . .
 
-COPY framework.rb .
-COPY unit-test.rb .
-CMD ruby unit-test.rb 
+FROM base as test
+CMD ["ruby", "unit-test.rb"]
 
-# FROM ruby as build2
+FROM base as run
+CMD ["ruby", "main.rb"]
 
 
 

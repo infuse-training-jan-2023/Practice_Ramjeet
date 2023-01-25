@@ -3,9 +3,9 @@ Selenium::WebDriver::Chrome.driver_path="C:\\Users\\Ramjeet\\Documents\\chrome-w
 # C:\\Users\\Ramjeet\\Documents\\chrome-webdriver\\chromedriver.exe
 # /usr/local/bin/chromedriver
 
-class MyFramework
+class Automate_framework
     def initialize
-        @driver=Selenium::WebDriver::Chrome
+        @driver=Selenium::WebDriver.for :chrome
     end
     def navigate_to(url)
         begin
@@ -99,7 +99,7 @@ end
 
 
 
-# test=MyFramework.new
+#  test=Automate_framework.new
 # test.navigate_to("https://thewholetruthfoods.com/")
 # test.select_element({"id": "search-key"},0)
 # test.send_data("abc",{"id"=>"search-key"},1)
