@@ -1,6 +1,8 @@
 require 'test/unit'
 require_relative 'framework'
 
+#"http://127.0.0.1:5500/demo.html"
+
 class Test_framework < Test::Unit::TestCase
     def test_object_created
         test_obj=Automate_framework.new
@@ -8,12 +10,12 @@ class Test_framework < Test::Unit::TestCase
     end
     def test_navigate_to
         test_obj=Automate_framework.new
-        assert_equal("success",test_obj.navigate_to("http://127.0.0.1:5500/demo.html"),"The test fails")
+        assert_equal("success",test_obj.navigate_to("file:///app/demo.html"),"The test fails")
     end
     def test_select_element
         
         test_obj=Automate_framework.new
-        url="http://127.0.0.1:5500/demo.html"
+        url="file:///app/demo.html"
         test_obj.navigate_to(url)
         assert_not_nil(test_obj.select_element({"id": "search"},0),"The test fails")
         assert_nil(test_obj.select_element({"id": "sear"},0),"The test fails")
@@ -36,7 +38,7 @@ class Test_framework < Test::Unit::TestCase
     def test_send_data
         
         test_obj=Automate_framework.new
-        url="http://127.0.0.1:5500/demo.html"
+        url="file:///app/demo.html"
         test_obj.navigate_to(url)
         assert_equal("sent",test_obj.send_data("abc",{"id"=>"search"},0,1),"The test fails")#id
         assert_equal("sent",test_obj.send_data("jason",{"class"=>"username"},0,1),"The test fails")#class
@@ -48,7 +50,7 @@ class Test_framework < Test::Unit::TestCase
     def test_click_on
 
         test_obj=Automate_framework.new
-        url="http://127.0.0.1:5500/demo.html"
+        url="file:///app/demo.html"
         test_obj.navigate_to(url)
         assert_equal("clicked",test_obj.click_on({"name"=>"submitbtn"},0),"The test fails")
         assert_equal("click_fail",test_obj.click_on({"name"=>"stbtn"},0),"The test fails")
@@ -57,7 +59,7 @@ class Test_framework < Test::Unit::TestCase
     def test_close_browser
         
         test_obj=Automate_framework.new
-        url="http://127.0.0.1:5500/demo.html"
+        url="file:///app/demo.html"
         test_obj.navigate_to(url)
         assert_equal("closed",test_obj.close_browser,"The test fails")
         

@@ -55,5 +55,6 @@ mainTestObj.search
 mainTestObj.addToCart
 sleep(3)
 mainTestObj.logout
+puts "done"
 
 
