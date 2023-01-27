@@ -14,14 +14,10 @@ class HashProb
         return xyz_hash
     end
     def demo_method(num)
-        begin
-            if(num==0)
-                raise
-            else
-                puts "demo_works"
-            end
-        rescue 
-            puts 'error'
+        if(num==0)
+            return false
+        else
+            return true
         end
     end
 end

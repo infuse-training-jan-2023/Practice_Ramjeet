@@ -32,8 +32,8 @@ class Test_ex3 < Test::Unit::TestCase
     end
     def test_demo_method
         as=HashProb.new
-        xyz_hash=Hash.new
-        assert_equal('demo_works',as.demo_method(1),"The expected does not match the actual")
+        assert_equal('false',as.demo_method(0),"The expected does not match the actual")
+        assert_equal('true',as.demo_method(1),"The expected does not match the actual")
     end
 
 end
