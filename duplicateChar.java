@@ -1,6 +1,6 @@
 public class DuplicateCharacters {  
      public static void main(String[] args) {  
-        String string1 = "Great responsibility";  
+        String string1 = "Greatest book in the world";  
         int count;  
           
         //Converts given string into character array  
