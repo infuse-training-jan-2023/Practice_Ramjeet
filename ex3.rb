@@ -20,8 +20,8 @@ class HashProb
             else
                 puts "demo_works"
             end
-        rescue => exception
-            puts exception
+        rescue 
+            puts 'error'
         end
     end
 end
