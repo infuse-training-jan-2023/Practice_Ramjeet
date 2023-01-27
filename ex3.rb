@@ -16,7 +16,7 @@ class HashProb
     def demo_method(num)
         begin
             if(num==0)
-                raise 'error'
+                raise
             else
                 puts "demo_works"
             end
