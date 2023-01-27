@@ -13,6 +13,17 @@ class HashProb
         puts xyz_hash
         return xyz_hash
     end
+    def demo_method(num)
+        begin
+            if(num==0)
+                raise 'error'
+            else
+                puts "demo_works"
+            end
+        rescue => exception
+            puts exception
+        end
+    end
 end
 
 h=HashProb.new
