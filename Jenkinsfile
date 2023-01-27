@@ -2,16 +2,21 @@ pipeline {
     agent any
 
     stages {
-        stage('set up') {
+        stage('build') {
             steps {
-                echo env.git_url
-                //access git_url parameter
+                bat 'ruby ex3.rb'
             }
         }
-        stage('Run') {
+        stage('test') {
             steps {
                 bat 'ruby test-ex3.rb'
             }
         }
+        // stage('merge') {
+        //     steps {
+        //         bat 'git switch jenkins/ruby'
+            
+        //     }
+        // }
     }
 }
