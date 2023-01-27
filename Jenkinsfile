@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Run') {
             steps {
-                bat '''java DuplicateCharacters.java
+                bat '''java DuplicateCharacters
 '''
             }
         }
