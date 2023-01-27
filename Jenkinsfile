@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('set up') {
             steps {
-                echo ${params.git_url}
+                echo env.git_url
                 
             }
         }
