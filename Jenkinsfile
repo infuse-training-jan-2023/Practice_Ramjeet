@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat '''javac duplicateChar.java
+                bat '''javac DuplicateCharacters.java
 '''
             }
         }
         stage('Run') {
             steps {
-                bat '''java duplicateChar.java
+                bat '''java DuplicateCharacters.java
 '''
             }
         }
