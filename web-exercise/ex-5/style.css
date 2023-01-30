@@ -145,3 +145,7 @@ body{
   }
 
 }
+
+.pokemon-name{
+  text-transform: capitalize;
+}

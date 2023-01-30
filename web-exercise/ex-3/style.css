@@ -48,8 +48,11 @@ color: rgb(16, 145, 209);
 font-size: 20px;
 padding: 40px;
 text-transform: capitalize;
-}
 
+}
+.um-navitems__main > li:hover, .um-navitems__secondary > li:hover  {
+  background-color: yellow;
+}
 
 .um-user-name{
   font-size: 15px;

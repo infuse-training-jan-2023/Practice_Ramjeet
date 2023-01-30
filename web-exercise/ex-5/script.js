@@ -30,8 +30,27 @@ function render_card(data){
         iframeDocument.body.style="font-size:20px;padding:35px;background-color:black;color:white;";
        let h;
        h="180px";
-        iframeDocument.body.innerHTML = "<div><h2>Pokemon Details</h2><img height="+h+" src='"+data.sprites.front_shiny+"'><img src='"+data.sprites.back_shiny+"'><div>id: "+data.id+"</div><div>Name:"+data.name+"</div><div>base_experience: "+data.base_experience+"</div><div>height: "+data.height+"</div><div>Stats: "+data.stats[0].base_stat+"</div><div>Type: "+data.types[0].type.name+"</div></div>";
+       let moves="";
+       for(let j=0;j<5;j++){
+        moves=data.moves[j].move.name+", "+moves;
+       }
+      
+
+        iframeDocument.body.innerHTML = "<div><h2>Pokemon Details</h2><img height="+h+" src='"+data.sprites.front_shiny+"'><img src='"+data.sprites.back_shiny+"'><div>id: "+data.id+"</div><div>Name:"+data.name+"</div><div>base_experience: "+data.base_experience+"</div><div>height: "+data.height+"</div><div>Stats: "+data.stats[0].base_stat+"</div><div>Type: "+data.types[0].type.name+"<div>Moves:"+moves+"</div><br><div><button>Show more moves</button></div>";
+
+        document.querySelector("iframe").contentWindow.document.getElementsByTagName("button")[0].addEventListener("click", function(){
+            moves="";
+            iframeDocument.body.innerHTML="";
+            for(let j=0;j<data.moves.length;j++){
+                moves=data.moves[j].move.name+",        "+moves;
+               }
+            iframeDocument.body.innerHTML = "<div><h2>Pokemon Details</h2><img height="+h+" src='"+data.sprites.front_shiny+"'><img             src='"+data.sprites.back_shiny+"'><div>id: "+data.id+"</div><div>Name:"+data.name+"</div><div>base_experience: "+data.base_experience+"</div><div>height: "+data.height+"</div><div>Stats: "+data.stats[0].base_stat+"</div><div>Type: "+data.types[0].type.name+"<div>Moves:"+moves+"</div><br>";
+        });
+
+      
+        
     });
+   
     
     image.src=data.sprites.front_default;
     image.addEventListener("mouseout", ()=>{
@@ -43,7 +62,7 @@ function render_card(data){
     });
     el.classList.add("grid-item");
    
-    card_content="Name:"+data.name+"<br>Weight: "+data.weight+"<br>base-experience: "+data.base_experience+"<br>";
+    let card_content="<div class='pokemon-name'>Name: "+data.name+"</div><br>Weight: "+data.weight+"<br>Base-experience: "+data.base_experience+"<br>";
     el.innerHTML=card_content;
     const box = document.getElementsByClassName('grid-container')[0];
     el.appendChild(image);
@@ -52,6 +71,7 @@ function render_card(data){
 
     
 }
+
 function send_data(data){
     
     values_store=data;
@@ -68,8 +88,8 @@ function show_on_screen(data){
         send_data(data);
     
 }
-var nexturl,values_store;
-var store_data= [];
+let nexturl,values_store;
+let store_data= [];
 let url="https://pokeapi.co/api/v2/pokemon";
 fetch_pokemons(url);
 
@@ -80,7 +100,7 @@ function search(){
     let ToSearch=document.getElementsByName("search")[0].value;
     let flag=0;
 
-    // alert(ToSearch);
+    alert(ToSearch);
     values_store.results.forEach(i => {
         
         if(ToSearch===i.name){
@@ -153,7 +173,22 @@ function render_sorted_card(data,i){
         iframeDocument.body.style="font-size:20px;padding:35px;background-color:black;color:white;";
        let h;
        h="180px";
-        iframeDocument.body.innerHTML = "<div><h2>Pokemon Details</h2><img height="+h+" src='"+data[i].sprites.front_shiny+"'><img  src='"+data[i].sprites.back_shiny+"'><div>id: "+data[i].id+"</div><div>Name:"+data[i].name+"</div><div>base_experience: "+data[i].base_experience+"</div><div>height: "+data[i].height+"</div><div>Stats: "+data[i].stats[0].base_stat+"</div><div>Type: "+data[i].types[0].type.name+" </div></div>";
+       let moves="";
+       for(let j=0;j<5;j++){
+        moves=data.moves[j].move.name+", "+moves;
+       }
+      
+        iframeDocument.body.innerHTML = "<div><h2>Pokemon Details</h2><img height="+h+" src='"+data[i].sprites.front_shiny+"'><img  src='"+data[i].sprites.back_shiny+"'><div>id: "+data[i].id+"</div><div>Name:"+data[i].name+"</div><div>base_experience: "+data[i].base_experience+"</div><div>height: "+data[i].height+"</div><div>Stats: "+data[i].stats[0].base_stat+"</div><div>Type: "+data[i].types[0].type.name+" </div><div>Moves:"+moves+"</div></div>";
+
+        document.querySelector("iframe").contentWindow.document.getElementsByTagName("button")[0].addEventListener("click", function(){
+            moves="";
+            iframeDocument.body.innerHTML="";
+            for(let j=0;j<data.moves.length;j++){
+                moves=data.moves[j].move.name+",        "+moves;
+               }
+            iframeDocument.body.innerHTML = "<div><h2>Pokemon Details</h2><img height="+h+" src='"+data[i].sprites.front_shiny+"'><img             src='"+data[i].sprites.back_shiny+"'><div>id: "+data[i].id+"</div><div>Name:"+data[i].name+"</div><div>base_experience: "+data[i].base_experience+"</div><div>height: "+data[i].height+"</div><div>Stats: "+data[i].stats[0].base_stat+"</div><div>Type: "+data[i].types[0].type.name+"<div>Moves:"+moves+"</div><br>";
+        });
+
     });
     
     image.src=data[i].sprites.front_default;
@@ -166,7 +201,7 @@ function render_sorted_card(data,i){
     });
     el.classList.add("grid-item");
    
-    card_content="Name:"+data[i].name+"<br>Weight: "+data[i].weight+"<br>base-experience: "+data[i].base_experience+"<br>";
+    let card_content="<div class='pokemon-name'>Name: "+data[i].name+"</div><br>Weight: "+data[i].weight+"<br>base-experience: "+data[i].base_experience+"<br>";
     el.innerHTML=card_content;
     const box = document.getElementsByClassName('grid-container')[0];
     el.appendChild(image);
