@@ -12,12 +12,12 @@ pipeline {
                 bat 'ruby test-ex3.rb'
             }
         }
-        stage('merge') {
-            steps {
-                bat 'git switch jenkins/ruby'
-                bat 'git '
+        // stage('merge') {
+        //     steps {
+        //         bat 'git switch jenkins/ruby'
+        //         bat 'git '
             
-            }
-        }
+        //     }
+        // }
     }
 }
