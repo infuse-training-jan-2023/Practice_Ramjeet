@@ -3,21 +3,24 @@ Selenium::WebDriver::Chrome.driver_path="C:\\Users\\Ramjeet\\Documents\\chrome-w
 
 
 class Test_browser_title
-    def get_title(driver)
-        driver.get("https://www.leetcode.com/")
-        puts("The title of the page is : #{driver.title}")
+   
+    def get_title(url)
+        @driver = Selenium::WebDriver.for :chrome
+        @driver.get(url)
+        puts("The title of the page is : #{@driver.title}")
         sleep(3)
     end
     
-    def close_browser(driver)
-        driver.close()
+    def close_browser
+        @driver.close()
     end
 end
 
 
 
-driver = Selenium::WebDriver.for :chrome
+
 obj=Test_browser_title.new
-obj.get_title(driver)
-obj.close_browser(driver)
+url="https://www.leetcode.com/"
+obj.get_title(url)
+obj.close_browser
 

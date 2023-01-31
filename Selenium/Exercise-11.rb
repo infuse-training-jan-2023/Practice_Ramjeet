@@ -1,13 +1,16 @@
 require 'selenium-webdriver'
 Selenium::WebDriver::Chrome.driver_path="C:\\Users\\Ramjeet\\Documents\\chrome-webdriver\\chromedriver.exe"
-driver = Selenium::WebDriver.for :chrome
+
 
 class Cell_value
-    def get(driver)
-        driver.get("https://the-internet.herokuapp.com/tables")
+    def initialize
+        @driver = Selenium::WebDriver.for :chrome
+    end
+    def get(url)
+        @driver.get(url)
         i=0 #row
         j=0 #column
-        table1 = driver.find_element(:tag_name, 'table')
+        table1 = @driver.find_element(:tag_name, 'table')
         table_body = table1.find_element(:tag_name, 'tbody')
         table_row = table_body.find_elements(:tag_name, 'tr')[i]
     
@@ -16,11 +19,12 @@ class Cell_value
         puts table_data.text
 
     end
-    def close_browser(driver)
-        driver.close()
+    def close_browser
+        @driver.close()
     end
 end
 
+url="https://the-internet.herokuapp.com/tables"
 obj=Cell_value.new
-obj.get(driver)
-obj.close_browser(driver)
+obj.get(url)
+obj.close_browser

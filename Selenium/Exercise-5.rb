@@ -3,9 +3,12 @@ Selenium::WebDriver::Chrome.driver_path="C:\\Users\\Ramjeet\\Documents\\chrome-w
 driver = Selenium::WebDriver.for :chrome
 
 class Search_test
-    def search(driver)
-        driver.get("https://duckduckgo.com/")
-        search_bar = driver.find_element(:name,'q')
+    def initialize
+        @driver = Selenium::WebDriver.for :chrome
+    end
+    def search(url)
+        @driver.get(url)
+        search_bar = @driver.find_element(:name,'q')
         search_bar.send_keys("ChatGPT")
         sleep(3)
         search_bar.send_keys(:enter)
@@ -13,7 +16,8 @@ class Search_test
     end
 end
 obj=Search_test.new
-obj.search(driver)
+url="https://duckduckgo.com/"
+obj.search(url)
 
 
 sleep(3)

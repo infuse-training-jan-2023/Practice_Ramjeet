@@ -3,10 +3,13 @@ Selenium::WebDriver::Chrome.driver_path="C:\\Users\\Ramjeet\\Documents\\chrome-w
 driver = Selenium::WebDriver.for :chrome
 
 class Get_table_header
-    def get(driver)
-        driver.get("https://cosmocode.io/automation-practice-webtable/")
+    def initialize
+        @driver = Selenium::WebDriver.for :chrome
+    end
+    def get(url)
+        @driver.get(url)
 
-        table_row = driver.find_element(:tag_name, 'tr')
+        table_row = @driver.find_element(:tag_name, 'tr')
         table_data = table_row.find_elements(:tag_name, 'td')
         table_data.each{ |n| puts n.text
 
@@ -14,11 +17,12 @@ class Get_table_header
 
 
     end
-    def close_browser(driver)
-        driver.close()
+    def close_browser
+        @driver.close()
     end
 end
 
+url="https://cosmocode.io/automation-practice-webtable/"
 obj=Get_table_header.new
-obj.get(driver)
-obj.close_browser(driver)
+obj.get(url)
+obj.close_browser

@@ -4,9 +4,12 @@ Selenium::WebDriver::Chrome.driver_path="C:\\Users\\Ramjeet\\Documents\\chrome-w
 
 
 class Content_dropdown
-    def select_dropdown(driver)
-        driver.get("https://letcode.in/forms")
-        select_element = driver.find_elements(:tag_name, 'select')[1]
+    def initialize
+        @driver = Selenium::WebDriver.for :chrome
+    end
+    def select_dropdown(url)
+        @driver.get(url)
+        select_element = @driver.find_elements(:tag_name, 'select')[1]
         option_elements = select_element.find_elements(tag_name: 'option')
         option_elements.each{ |n| puts n.text }
 
@@ -16,12 +19,11 @@ class Content_dropdown
     end
 end
 
-driver = Selenium::WebDriver.for :chrome
-obj=Content_dropdown.new
-obj.select_dropdown(driver)
-obj.close_browser(driver)
 
-# email_locator = {relative: {tag_name: 'input', above: {id: 'password'}}}
-# below,left,right
+obj=Content_dropdown.new
+url="https://letcode.in/forms"
+obj.select_dropdown(url)
+obj.close_browser
+
 
  
