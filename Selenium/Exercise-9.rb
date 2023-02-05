@@ -12,10 +12,7 @@ class Get_table_header
         table_row = @driver.find_element(:tag_name, 'tr')
         table_data = table_row.find_elements(:tag_name, 'td')
         table_data.each{ |n| puts n.text
-
         }
-
-
     end
     def close_browser
         @driver.close()
