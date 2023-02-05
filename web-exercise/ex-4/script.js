@@ -11,8 +11,8 @@ const user = {
 
 const printUserProfile = () => {
     // Piyush Sharma is a Senior Software Engineer at Infuse Consulting. He likes Reading, Listening to music and Collecting stamps
-    var {name, designation, company, hobbies} = user;
-    var [...n]=hobbies
+    let {name, designation, company, hobbies} = user;
+    let [...n]=hobbies
     console.log(name+" is a "+designation+" at "+company+". He likes "+n); 
     
 
