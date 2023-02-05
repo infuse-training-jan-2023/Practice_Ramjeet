@@ -2,15 +2,15 @@ import pytest
 from pytest_bdd import scenarios, when, then
 import requests
 
-scenarios('../features/get_all_items.feature')
+scenarios('../features/get_an_item.feature')
 
-get_all_items_url = "http://127.0.0.1:5000/getitemsall"
+get_item_url = "http://127.0.0.1:5000/getanitem/7"
 
-@when('I search for all items')
-def get_all_items():
-  pytest.api_response = requests.get(get_all_items_url)
+@when('I search for an item')
+def get_item():
+  pytest.api_response = requests.get(get_item_url)
 
-@then('I should get all the items present')
+@then('I should get the item requested')
 def check_the_items_returned():
   body = pytest.api_response.json()
   for item in body:
