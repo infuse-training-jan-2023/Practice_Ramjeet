@@ -1,12 +1,10 @@
 pipeline {
-    agent any
+    agent {label 'slave'}
 
     stages {
         stage('createFile') {
             steps {
-                bat '''mkdir ex2
-                    cd ex2
-                    echo hello there > greeting.txt'''
+                bat "C:\\Users\\Ramjeet\\Documents\\JenkinsExercise\\batchFile.bat"
             }
         }
     }

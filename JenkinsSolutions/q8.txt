@@ -2,13 +2,13 @@ import groovy.json.JsonSlurper
 node {
    
     stage('fetch') { 
-        URL url = new URL("https://jsonplaceholder.typicode.com/todos");
+        URL todo_url = new URL("https://jsonplaceholder.typicode.com/todos");
        
-         def card = new JsonSlurper().parse(url)
+         def todo_list = new JsonSlurper().parse(todo_url)
         //  println(card)
-        for(def list : card) {
-            if(list.completed == false) {
-                println(list)
+        for(def todo : todo_list) {
+            if(todo.completed == false) {
+                println(todo)
             }
         }
     }
