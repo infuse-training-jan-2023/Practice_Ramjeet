@@ -21,22 +21,3 @@ class ExerciseFour:
             raise e
 
     
-    
-
-# for i in range(len(numlist)):
-#     j=i+1
-#     total=numlist[i]
-#     if numlist[i]==k:
-#         count=count+1
- 
-#     # list = [ total=tot for j in range(len(numlist))]
-#     # if(total==k):
-#     #     count=count+1  
-
-#     while j<len(numlist):
-#         total=total+numlist[j]
-#         if total==k:
-#             count=count+1    
-#         j=j+1
-
-# print(count)

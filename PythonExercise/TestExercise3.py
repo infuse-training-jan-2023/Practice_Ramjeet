@@ -1,6 +1,6 @@
 import pytest
 from Exercise3 import SkipSport
-class Test_exercise3:
+class TestExercise3:
     def test_if_object_created(self):
         temp=SkipSport()
         assert isinstance(temp,SkipSport)

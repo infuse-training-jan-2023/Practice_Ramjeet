@@ -11,6 +11,8 @@ class SkipSport:
         
         return temp_var
  
-obj=SkipSport()
 
-print(obj.skip_sportsfn(['Cricket','TT','Football','Hockey'],2))
+
+ 
+# obj=SkipSport()
+# print(obj.skip_sportsfn(['Cricket','TT','Football','Hockey'],2))

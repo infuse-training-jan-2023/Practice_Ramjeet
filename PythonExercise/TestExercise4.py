@@ -2,7 +2,7 @@ import pytest
 from Exercise4 import ExerciseFour
 from data import numlistdata
 
-class Test_exercise2:
+class TestExercise4:
     def test_object_created(self):
         temp=ExerciseFour()
         assert isinstance(temp, ExerciseFour)
@@ -19,5 +19,6 @@ class Test_exercise2:
         output=1023
         temp=ExerciseFour()
         assert output ==temp.sub_arr_ops(numlistdata,k)
+
 
     
