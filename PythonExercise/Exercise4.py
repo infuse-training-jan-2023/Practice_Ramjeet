@@ -1,7 +1,7 @@
 
 
 
-class exercisefour:
+class ExerciseFour:
     def sub_arr_ops(self,numlist,k):
         try:
             count=0
@@ -17,8 +17,8 @@ class exercisefour:
                 else: 
                     dict[total] = 1 
             return count
-        except:
-            return 'error'
+        except Exception as e:
+            raise e
 
     
     

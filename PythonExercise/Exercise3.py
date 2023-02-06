@@ -1,9 +1,9 @@
 
 class SkipSport:
-    def skip_sportsfn(self,arr,n):
-        if n>len(arr) or n<0 or len(arr)==0:
+    def skip_sportsfn(self,arr,number):
+        if number>len(arr) or number<0 or len(arr)==0:
             return False
-        i=n
+        i=number
         temp_var={}
         while i< len(arr):
             temp_var[i]=arr[i]
