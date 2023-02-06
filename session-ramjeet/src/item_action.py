@@ -1,4 +1,4 @@
-from item_repository import ItemRepository
+from src.item_repository import ItemRepository
 
 class ItemActions:
   def __init__(self) -> None:

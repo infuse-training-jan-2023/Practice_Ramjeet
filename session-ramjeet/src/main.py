@@ -1,7 +1,7 @@
 from flask import Flask, Response, request
 import json, csv
-from item_action import ItemActions
-from user_action import UserActions
+from src.item_action import ItemActions
+from src.user_action import UserActions
 app=Flask(__name__)
 item_actions=ItemActions()
 user_actions=UserActions()
@@ -77,6 +77,10 @@ def add_new_user():
 
 @app.route('/saveitemstoexcel', methods = ['GET'])
 def save_item_to_excel():
+  return save_excel()
+
+
+def save_excel():
   items = item_actions.get_all_items()
   items=items[0]
   # items=json.dumps(items[0])
