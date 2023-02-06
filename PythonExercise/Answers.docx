@@ -1,0 +1,17 @@
+1.Difference between composition and inheritance
+In inheritance, we define the class which we are inheriting(super class) and most importantly it cannot be changed at runtime, whereas in composition we only define a type which we want to use and which can hold its different implementation also it can change at runtime. Hence, Composition is much more flexible than Inheritance.
+
+2.Append List : append() function inserts a single element into an existing list. The element will be added to the end of the old list.
+Extend List: Iterates over its argument and adding each element to the list and extending the list. An iterable is given as argument
+
+3.Pop element from empty list gives IndexError and would not work, and in case of the index being more than size of the list it would also result in an error.
+list=[1,2,3,4]
+
+list.pop(4)
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+IndexError: pop index out of range
+
+4.Package in python is a folder that contains different modules in the form of files.
+
+5.To create a package, then you have to include __init__.py inside package directory. The code can be written inside or outside and it will work
