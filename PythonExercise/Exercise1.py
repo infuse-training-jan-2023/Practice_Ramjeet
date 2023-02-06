@@ -1,9 +1,9 @@
 
 
-class Srno_avg:
+class SrnoAvg:
     
-    def __init__(self,n):    
-        self.sr_no=n
+    def __init__(self,serial_no):    
+        self.sr_no=serial_no
 
     def findOutputString(self) -> str:
         try:
@@ -17,7 +17,7 @@ class Srno_avg:
     
 
 # number="002-10.00-20.00"
-# sr=Srno_avg(number)
+# sr=SrnoAvg(number)
 # OutputString=sr.findOutputString()
 # print(OutputString)
 
