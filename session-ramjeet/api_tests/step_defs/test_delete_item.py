@@ -18,7 +18,7 @@ def check_the_deleted_item_id_returned():
   body = pytest.api_response.json()
   assert body == 19
 
-@then('the api status code should be 200')
+@then('the api status code should be 201')
 def check_status_code():
   assert pytest.api_response.status_code == 201
 

@@ -9,11 +9,11 @@ def email_validate():
   return validate(email)
 
 def validate(email):
-      email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+      email_pattern = r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+'
       if re.match(email_pattern,email):
             return("Valid")
-      else:
-            return("Invalid")
+      
+      return("Invalid")
 
 if __name__=='__main__':
     app.run(debug=True,port=5000,host='0.0.0.0')

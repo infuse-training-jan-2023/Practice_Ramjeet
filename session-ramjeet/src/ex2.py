@@ -13,8 +13,8 @@ def password_val(passw):
   passw_pattern = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*)(?=.*[@$!%*?&])[A-Za-z@$!%*?&]{8,}$"
   if re.match(passw_pattern,passw):
         return("Valid")
-  else:
-        return("Invalid")
+  
+  return("Invalid")
 
 if __name__=='__main__':
     app.run(debug=True,port=5000,host='0.0.0.0')

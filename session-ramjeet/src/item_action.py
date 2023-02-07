@@ -22,9 +22,9 @@ class ItemActions:
       
   def get_item(self,id):
     try:
-      items = self.item_repo.get_item(id)
+      item = self.item_repo.get_item(id)
       res = []
-      for item in items:
+      for item in item:
         res.append({
           'id': item[0],
           'item': item[1],
@@ -50,10 +50,10 @@ class ItemActions:
       print(e)
       return {}
       
-  def update_item(self, id, item, status, reminder):
+  def update_item(self, id,data):
     try:
-      item = self.item_repo.update_item(id, item, status, reminder)
-      return item
+      item_id = self.item_repo.update_item(id, data)
+      return item_id
     except Exception as e:
       print(e)
       return {}

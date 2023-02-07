@@ -5,7 +5,8 @@ class ItemRepository:
   DBPATH = './todo.db'
 
   def connect_db(self):
-    return sqlite3.connect(self.DBPATH)
+    if self.connection is None:
+      self.connection =  sqlite3.connect(self.db_path, check_same_thread=False)
   
 
   def get_all_items(self):
@@ -54,17 +55,15 @@ class ItemRepository:
     except Exception as e:
       raise Exception('Error: ', e)
 
-  def update_item(self,id, item, status,reminder):
+  def update_item(self,id, data):
     try:
       conn = self.connect_db()
       c = conn.cursor()
-      update_cursor = c.execute('update items set item=?, status=?, reminder=? where id=?', (item, status, reminder, id))
+      for key,value in data:
+        update_cursor = c.execute('update items set '+key+'=? where id=?', (value, id))
       conn.commit()
       return {
-        'id': id,
-        'item': item,
-        'status': status,
-        'reminder': reminder
+        'id': id
       }
     except Exception as e:
       raise Exception('Error: ', e)

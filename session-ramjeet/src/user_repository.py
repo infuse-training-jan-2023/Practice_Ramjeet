@@ -5,7 +5,8 @@ class UserRepository:
   DBPATH = './todo.db'
 
   def connect_db(self):
-    return sqlite3.connect(self.DBPATH)
+    if self.connection is None:
+      self.connection =  sqlite3.connect(self.db_path, check_same_thread=False)
 
   def add_user(self,username, passw):
     try:
