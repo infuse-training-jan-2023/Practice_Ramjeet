@@ -10,7 +10,7 @@ class HashProb
                 end
             end
         end
-        puts xyz_hash
+        
         return xyz_hash
     end
 end
