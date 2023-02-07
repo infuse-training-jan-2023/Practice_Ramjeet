@@ -4,15 +4,9 @@ require 'selenium-webdriver'
 # C:\\Users\\Ramjeet\\Documents\\chrome-webdriver\\chromedriver.exe
 
 class Automate_framework
-    def initialize
-        Selenium::WebDriver::Chrome.driver_path = "/opt/chromedriver-109.0.5414.74/chromedriver"
-		options = Selenium::WebDriver::Chrome::Options.new
-        options.add_argument("--headless")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--window-size=1920,1080")
-        options.add_argument("--disable-gpu")
-        options.add_argument("--disable-dev-shm-usage")
-        @driver = Selenium::WebDriver.for :chrome, options: options
+    def initialize(driver)
+    #    @driver=Driver.new.driver_method()
+        @driver = driver
     end
     def navigate_to(url)
         begin
@@ -21,7 +15,7 @@ class Automate_framework
             sleep(3)
             #puts 'Navigated to site'
             return 'success'
-        rescue
+        rescue 
             puts "Failed to navigate to site"
             
         end
@@ -34,7 +28,7 @@ class Automate_framework
     
     def select_element(locator,i)
         #ith element of class or tag
-        #if not class keep i=0
+        #if not keep i=0
 
         by, value = locator.first
         by=by.to_s
@@ -44,7 +38,7 @@ class Automate_framework
             elsif by=="class"
                 @driver.find_elements(:class, value)[i]
             elsif by=="css_selector"
-                @driver.find_elements(:css, value)#[]**
+                @driver.find_elements(:css, value)
             elsif by=="xpath"
                 @driver.find_element(:xpath, value)
             elsif by=="name"
@@ -58,6 +52,28 @@ class Automate_framework
 
     end
 
+    def select_multiple_elements(locator)
+
+        by, value = locator.first
+        by=by.to_s
+        begin
+            if by=="id"
+                @driver.find_elements(:id, value)
+            elsif by=="class"
+                @driver.find_elements(:class, value)
+            elsif by=="css_selector"
+                @driver.find_elements(:css, value)
+            elsif by=="xpath"
+                @driver.find_elements(:xpath, value)
+            elsif by=="name"
+                @driver.find_element(:name, value)
+            elsif by=="tag_name"
+                @driver.find_elements(:tag_name, value)
+            end
+        rescue
+            puts "Couldn't select the specified element"
+        end
+    end
 
     def click_on(locator,i)
 
@@ -70,8 +86,8 @@ class Automate_framework
         rescue =>e
             # puts e.message
             puts "Couldn't click on the specified element"
-            return 'click_fail'
-           
+            raise e
+            
         end
   
     end
@@ -85,9 +101,9 @@ class Automate_framework
                 el.send_keys(:enter)
             end
             return 'sent'
-        rescue
+        rescue=>e
             puts "Error in sending data"
-            return 'error'
+            raise e
         end
     end
    
@@ -95,7 +111,7 @@ class Automate_framework
     def close_browser
         begin
             @driver.close()
-            return 'closed'
+            return @driver
         rescue
             puts "Browser couldn't be closed"
             return 'failed'
