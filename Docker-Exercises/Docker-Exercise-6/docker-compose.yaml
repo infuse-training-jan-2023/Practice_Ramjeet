@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: ./server
+    ports:
+      - "3001:3001"
+    volumes: 
+      - C:\Users\Ramjeet\Desktop\Docker-Exercises\Docker-Exercise-6\server:/server
+  frontend:
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+    volumes : 
+      - C:\Users\Ramjeet\Desktop\Docker-Exercises\Docker-Exercise-6\client:/client
