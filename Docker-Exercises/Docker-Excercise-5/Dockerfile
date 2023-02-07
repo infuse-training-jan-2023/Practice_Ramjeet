@@ -1,6 +1,6 @@
 FROM node
 WORKDIR ./app
-RUN npm install -g npm
+RUN npm install
 ENV port=5000
 RUN npm install express 
 RUN npm i -D nodemon
