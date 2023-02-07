@@ -1,8 +1,9 @@
 import sqlite3
 
 class ItemRepository:
-  NOT_STARTED = "Not Started"
-  DBPATH = './todo.db'
+  def __init__(self) -> None:   
+    self.db_path = './todo.db'
+    self.connection = None
 
   def connect_db(self):
     if self.connection is None:
@@ -11,8 +12,8 @@ class ItemRepository:
 
   def get_all_items(self):
     try:
-      conn = self.connect_db()
-      c = conn.cursor()
+      self.connect_db()
+      c = self.connection.cursor()
       rows = c.execute('select * from items')
       return rows
     except Exception as e:
@@ -20,8 +21,8 @@ class ItemRepository:
 
   def get_item(self,id):
     try:
-      conn = self.connect_db()
-      c = conn.cursor()
+      self.connect_db()
+      c = self.connection.cursor()
       row = c.execute('select * from items where id=?',(id,))
       return row
     except Exception as e:
@@ -29,12 +30,10 @@ class ItemRepository:
 
   def delete_item(self,id):
     try:
-        # print(type(id))
-        conn = self.connect_db()
-        c = conn.cursor()
+        self.connect_db()
+        c = self.connection.cursor()
         delete_cursor = c.execute('delete from items where id=?',(id,))
-        conn.commit()
-        
+        self.connection.commit()
         return id
     except Exception as e:
         raise Exception('Error: ', e)
@@ -42,14 +41,14 @@ class ItemRepository:
 
   def add_item(self,item, reminder):
     try:
-      conn = self.connect_db()
-      c = conn.cursor()
-      insert_cursor = c.execute('insert into items(item, status, reminder) values(?,?,?)', (item, self.NOT_STARTED, reminder))
-      conn.commit()
+      self.connect_db()
+      c = self.connection.cursor()
+      insert_cursor = c.execute('insert into items(item, status, reminder) values(?,?,?)', (item, 'Not Started', reminder))
+      self.connection.commit()
       return {
         'id': insert_cursor.lastrowid,
         'item': item,
-        'status': self.NOT_STARTED,
+        'status': 'Not Started',
         'reminder': reminder
       }
     except Exception as e:
@@ -57,11 +56,11 @@ class ItemRepository:
 
   def update_item(self,id, data):
     try:
-      conn = self.connect_db()
-      c = conn.cursor()
-      for key,value in data:
+      self.connect_db()
+      c = self.connection.cursor()
+      for key,value in data.items():
         update_cursor = c.execute('update items set '+key+'=? where id=?', (value, id))
-      conn.commit()
+      self.connection.commit()
       return {
         'id': id
       }

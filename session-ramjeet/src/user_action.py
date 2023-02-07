@@ -1,4 +1,4 @@
-from src.user_repository import UserRepository
+from user_repository import UserRepository
 
 class UserActions:
   def __init__(self) -> None:

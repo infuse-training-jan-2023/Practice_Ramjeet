@@ -4,7 +4,7 @@ import requests
 
 scenarios('../features/get_an_item.feature')
 
-get_item_url = "http://127.0.0.1:5000/getanitem/7"
+get_item_url = "http://127.0.0.1:5000/item/7"
 
 @when('I search for an item')
 def get_item():

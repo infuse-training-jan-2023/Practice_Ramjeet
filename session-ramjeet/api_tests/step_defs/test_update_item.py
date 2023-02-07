@@ -2,23 +2,21 @@ import pytest
 from pytest_bdd import scenarios, when, then
 import requests
 
-scenarios('../features/add_new_item.feature')
+scenarios('../features/update_item.feature')
 
-add_new_item_url = "http://127.0.0.1:5000/item"
+update_item_url = "http://127.0.0.1:5000/item/10"
 
-@when('I add item to todo')
-def add_new_item():
+@when('I update an item')
+def update_item():
   data={
-    "item" : "Get grocery from market",
-    "reminder": True
+    "item" : "Go to work"
   }
-  pytest.api_response = requests.post(add_new_item_url, json=data)
+  pytest.api_response = requests.put(update_item_url,json=data)
 
-@then('I should be able to add item to the todo')
-def check_the_added_item_returned():
+@then('item should be updated from the todo')
+def check_the_updated_item_id_returned():
   body = pytest.api_response.json()
-  assert type(body) == dict
-
+  assert body["id"] == 10
 
 @then('the api status code should be 201')
 def check_status_code():

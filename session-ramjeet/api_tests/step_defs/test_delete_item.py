@@ -4,14 +4,14 @@ import requests
 
 scenarios('../features/delete_item.feature')
 
-delete_item_url = "http://127.0.0.1:5000/deleteitem"
+delete_item_url = "http://127.0.0.1:5000/item"
 
 @when('I delete an item')
 def delete_item():
   data={
     "id" : 19
   }
-  pytest.api_response = requests.post(delete_item_url,json=data)
+  pytest.api_response = requests.delete(delete_item_url,json=data)
 
 @then('item should be deleted from the todo')
 def check_the_deleted_item_id_returned():

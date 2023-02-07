@@ -1,7 +1,7 @@
 from flask import Flask, Response, request
 import json, csv
-from src.item_action import ItemActions
-from src.user_action import UserActions
+from item_action import ItemActions
+from user_action import UserActions
 app = Flask(__name__)
 item_actions = ItemActions()
 user_actions = UserActions()
@@ -82,21 +82,23 @@ def save_item_to_excel():
 
 def save_excel():
   items = item_actions.get_all_items()
-  items = items[0]
-  # items=json.dumps(items[0])
-  # print(type(items))
+  # items = items[0]
+
   with open('todo_items.csv', 'w') as data_file:
     data_file = open('todo_items.csv', 'w')
     csv_writer = csv.writer(data_file)
     flag = 0
-  
-    for item in items:
+    counter=0
+    while counter < len(items):
+      item=items[counter]
+      print(item.keys())
       if flag == 0:
-        header = items.keys()
-        csv_writer.writerow(header)
-        flag += 1
- 
-    csv_writer.writerow(items.values())
+          header = item.keys()
+          csv_writer.writerow(header)
+          flag += 1
+    
+      csv_writer.writerow(item.values())
+      counter=counter+1
  
   
   return Response(json.dumps(items), mimetype='application/json', status=200)

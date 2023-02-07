@@ -1,8 +1,9 @@
 import sqlite3
 
 class UserRepository:
-  NOT_STARTED = "Not Started"
-  DBPATH = './todo.db'
+  def __init__(self) -> None:   
+    self.db_path = './todo.db'
+    self.connection = None
 
   def connect_db(self):
     if self.connection is None:
@@ -10,10 +11,10 @@ class UserRepository:
 
   def add_user(self,username, passw):
     try:
-      conn = self.connect_db()
-      c = conn.cursor()
+      self.connect_db()
+      c = self.connection.cursor()
       insert_cursor = c.execute('insert into users(username, passw) values(?,?)', (username, passw))
-      conn.commit()
+      self.connection.commit()
       return {
         'id': insert_cursor.lastrowid,
         'user': username,
