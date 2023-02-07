@@ -1,8 +1,8 @@
 pipeline {
-    agent any
+    agent {label 'slave'}
 
     stages {
-        stage('build') {
+        stage('run') {
             steps {
                 bat 'ruby ex3.rb'
             }
