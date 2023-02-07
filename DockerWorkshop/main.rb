@@ -1,8 +1,9 @@
 require_relative 'framework'
-
+require_relative 'driver'
 class WebTest
     def initialize
-        @autoFrame=Automate_framework.new
+        driver=Driver.new.driver_method()
+        @autoFrame=Automate_framework.new(driver)
     end
     def visit_site(url)
         @autoFrame.navigate_to(url)
