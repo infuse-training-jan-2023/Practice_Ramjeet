@@ -10,6 +10,9 @@ class Driver
         options.add_argument("--disable-gpu")
         options.add_argument("--disable-dev-shm-usage")
         driver = Selenium::WebDriver.for :chrome, options: options
+
+        # Selenium::WebDriver::Chrome.driver_path = "C:\\Users\\Ramjeet\\Documents\\chrome-webdriver\\chromedriver.exe"
+        # driver = Selenium::WebDriver.for :chrome
         return driver
     end
 end

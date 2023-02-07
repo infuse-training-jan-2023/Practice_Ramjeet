@@ -1,11 +1,11 @@
 require 'selenium-webdriver'
 
-
+require_relative 'driver'
 # C:\\Users\\Ramjeet\\Documents\\chrome-webdriver\\chromedriver.exe
 
 class Automate_framework
     def initialize(driver)
-    #    @driver=Driver.new.driver_method()
+    
         @driver = driver
     end
     def navigate_to(url)
@@ -13,7 +13,6 @@ class Automate_framework
             @driver.get(url)
             @driver.manage.window.maximize
             sleep(3)
-            #puts 'Navigated to site'
             return 'success'
         rescue 
             puts "Failed to navigate to site"
@@ -21,11 +20,7 @@ class Automate_framework
         end
  
     end
-    # def slide(locator,i,finish_x,start_x, finish_y, start_y)
-    #     slider=select_element(locator,i)    
-    #     @driver.action.drag_and_drop_by(slider,finish_x - start_x, finish_y - start_y).perform
-    # end
-    
+
     def select_element(locator,i)
         #ith element of class or tag
         #if not keep i=0
@@ -86,8 +81,7 @@ class Automate_framework
         rescue =>e
             # puts e.message
             puts "Couldn't click on the specified element"
-            raise e
-            
+            raise e   
         end
   
     end
