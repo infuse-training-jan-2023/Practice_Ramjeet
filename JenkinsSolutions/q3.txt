@@ -17,5 +17,5 @@ pipeline {
 }
 
 //cron expression
-//H H * * 1,2,3,4,5
+//H H * * 1-5
 
