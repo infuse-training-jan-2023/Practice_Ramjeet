@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('build') {
+            steps {
+                
+                echo env.STAGE_NAME
+            }
+        }
+          stage('test') {
+            steps {
+                echo env.STAGE_NAME
+            }
+        }
+    }
+}
+
+//cron expression
+//H H * * 1-5
+
